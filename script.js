@@ -2,7 +2,7 @@ let score = 0;
 let correctAnswer = null;
 
 function getNextQuestion() {
-    fetch('https://sleepy-dove-handbag.cyclic.app')
+    fetch('https://sleepy-dove-handbag.cyclic.app/question')
     .then(response => response.json())
     .then(data => {
         correctAnswer = data.answer;
