@@ -9,13 +9,18 @@ function getNextQuestion() {
         document.getElementById('question').innerText = data.message;
         let optionsHtml = '';
         data.options.forEach((option, index) => {
-            optionsHtml += `<button onclick="answer(${index})">${option}</button>`;
+            optionsHtml += `<button id="option${index}" onclick="answer(${index})">${option}</button>`;
         });
         document.getElementById('options').innerHTML = optionsHtml;
     });
 }
 
 function answer(index) {
+    const buttons = document.getElementsByTagName('button');
+    for(let i = 0; i < buttons.length; i++){
+        buttons[i].style.backgroundColor = i === correctAnswer ? 'green' : 'red';
+        buttons[i].disabled = true;
+    }
     if(index === correctAnswer) {
         document.body.style.backgroundColor = "green";
         score++;
@@ -23,7 +28,7 @@ function answer(index) {
         document.body.style.backgroundColor = "red";
     }
     document.getElementById('score').innerText = "Score: " + score;
-    getNextQuestion();
+    setTimeout(getNextQuestion, 2000); // Adds a delay of 2 seconds before the next question
 }
 
 getNextQuestion();
