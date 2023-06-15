@@ -28,7 +28,7 @@ function answer(index) {
         document.body.style.backgroundColor = "red";
     }
     document.getElementById('score').innerText = "Score: " + score;
-    setTimeout(getNextQuestion, 2000); // Adds a delay of 2 seconds before the next question
+    setTimeout(getNextQuestion, 1000);
 }
 
 getNextQuestion();
